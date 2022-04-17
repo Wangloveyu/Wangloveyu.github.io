@@ -1,0 +1,770 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+/*
+initialize css counter
+#write {
+    counter-reset: h1
+}
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+/*
+#write h1:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+
+#write h3:before,
+h3.md-focus.md-heading:before /** override the default style for focused headings *//* {
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+
+#write h4:before,
+h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+
+#write h5:before,
+h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+
+#write h6:before,
+h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+
+/* override the default style for focused headings *//*
+#write>h3.md-focus:before,
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left:initial;
+    float: none;
+    top:initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+} 
+*/
+
+</style><title>ads</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='avl树'><span>AVL树</span></h2><h3 id='什么是avl树'><span>什么是AVL树</span></h3><p><span>AVL树又称为高度平衡的二叉搜索树，即自平衡二叉搜索树（Self-balancing binary search tree）</span></p><p><span>它能保持二叉树的高度平衡，尽量降低二叉树的高度，减少树的平均搜索长度，是二叉搜索树的一种改进算法</span></p><p><span>AVL树的查找、插入和删除在</span><strong><span>平均和最坏情况下都是O(log n)</span></strong></p><h3 id='平衡因子bfbalance-factor'><span>平衡因子(BF，Balance Factor)</span></h3><ul><li><p><span>定义</span></p><ul><li><span>每个节点的左子树的高度减去右子树的高度</span></li></ul></li><li><p><span>计算公式</span></p><ul><li><span>即BF(node) = h</span><sub><span>L</span></sub><span>-h</span><sub><span>R</span></sub></li><li><span>在一棵AVL树中，BF(node)= -1,0,1</span></li></ul></li></ul><h3 id='高度平衡height-balanced）'><span>高度平衡（height balanced）</span></h3><ol start='' ><li><p><strong><span>规定</span></strong><span>空树是高度平衡的且空树的高度为-1</span></p></li><li><p><span>如果T是一颗非空的树，T</span><sub><span>L</span></sub><span>和T</span><sub><span>R</span></sub><span>是其左子树和右子树，则当满足以下条件时T是高度平衡的</span></p><ol start='' ><li><span>T</span><sub><span>L</span></sub><span>和T</span><sub><span>R</span></sub><span>是高度平衡的</span></li><li><span>平衡因子的绝对值即| h</span><sub><span>L</span></sub><span>-h</span><sub><span>R</span></sub><span> |&lt;=1，其中h</span><sub><span>L</span></sub><span>和h</span><sub><span>R</span></sub><span>分别是T</span><sub><span>L</span></sub><span>和T</span><sub><span>R</span></sub><span>的高度</span></li></ol></li></ol><h3 id='旋转规则-1'><span>旋转规则</span></h3><h4 id='添加节点'><span>添加节点</span></h4><p><span>AVL树当且仅当检测到某一节点的平衡因子出错时进行旋转</span></p><p><span>下方令插入节点后平衡因子出错的节点为X，插入的节点为K</span></p><blockquote><p><span>注意：X不一定是插入节点的爷爷节点，还可能是其他祖先节点</span></p></blockquote><figure><table><thead><tr><th><span>情况</span></th><th><span>说明</span></th><th><span>处理方式</span></th></tr></thead><tbody><tr><td><span>LL</span></td><td><span>节点K插入到节点X的左孩子的左边</span></td><td><span>对节点X进行右旋</span></td></tr><tr><td><span>RR</span></td><td><span>节点K插入到节点X的右孩子的右边</span></td><td><span>对节点X进行左旋</span></td></tr><tr><td><span>LR</span></td><td><span>节点K插入到节点X的左孩子的右边</span></td><td><span>先对节点X的左孩子进行左旋，再对节点X进行右旋</span></td></tr><tr><td><span>RL</span></td><td><span>节点K插入到节点X的右孩子的左边</span></td><td><span>先对节点X的右孩子进行右旋，再对节点X进行左旋</span></td></tr></tbody></table></figure><h5 id='示例'><span>示例</span></h5><ul><li><span>LL</span></li></ul><p><img src="https://img-blog.csdnimg.cn/20210123104112780.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW9fbGVpbGVp,size_16,color_FFFFFF,t_70" referrerpolicy="no-referrer" alt="在这里插入图片描述"></p><ul><li><span>RR</span></li></ul><p><img src="https://img-blog.csdnimg.cn/20210123111142437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW9fbGVpbGVp,size_16,color_FFFFFF,t_70" referrerpolicy="no-referrer" alt="在这里插入图片描述"></p><ul><li><span>LR</span></li></ul><p><img src="https://img-blog.csdnimg.cn/20210123115056269.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW9fbGVpbGVp,size_16,color_FFFFFF,t_70" referrerpolicy="no-referrer" alt="在这里插入图片描述"></p><ul><li><span>RL</span></li></ul><p><img src="https://img-blog.csdnimg.cn/20210123212800497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW9fbGVpbGVp,size_16,color_FFFFFF,t_70" referrerpolicy="no-referrer" alt="在这里插入图片描述"></p><h3 id='avl树的最少节点数'><span>AVL树的最少节点数</span></h3><p><span>当N</span><sub><span>h</span></sub><span> = N</span><sub><span>h-1</span></sub><span> + N</span><sub><span>h-2</span></sub><span> + 1 时，高度平衡树所需的节点数最少，此时左右子树高度不同，其中 N</span><sub><span>h</span></sub><span> 为高度为 h 的高度平衡树的最少节点数，h &gt; 0</span></p><h3 id='删除节点'><span>删除节点</span></h3><p><span>同二叉搜索树，即遵循以下步骤（以删除X节点为例）：</span></p><ol start='' ><li><span>找到X节点</span></li><li><span>删除X节点</span></li><li><span>找到X节点的左子树的最大值，设为Y</span></li><li><span>用节点Y代替原先X节点的位置，即成为新的根</span></li><li><span>检查是否需要维护平衡因子</span></li></ol><h2 id='伸展树splay-tree）'><span>伸展树（Splay Tree）</span></h2><p><span>伸展树的均摊时间复杂度是O(MlogN)</span></p><h3 id='基本思想'><span>基本思想</span></h3><p><span>考虑到局部性原理（刚被访问的内容下次可能仍会被访问，查找次数多的内容可能下一次会被访问），为了使整个查找时间更小，被查频率高的那些节点应当经常处于靠近树根的位置。</span></p><p><span>伸展树不需要保存节点的高度信息，这样能够节省存储空间。</span></p><h3 id='旋转规则-2'><span>旋转规则</span></h3><h4 id='插入操作-1'><span>插入操作</span></h4><p><span>splay树插入的时候按照二叉搜索树规则插入，然后对插入的节点进行一次查找操作</span></p><blockquote><p><span>查找操作的目的是将新插入的节点提升至根节点</span></p></blockquote><h4 id='查找操作'><span>查找操作</span></h4><p><span>以被访问的节点X为例，假设节点P为节点X的当前父亲，节点G为X的当前爷爷</span></p><figure><table><thead><tr><th><span>情况</span></th><th><span>调整方法</span></th></tr></thead><tbody><tr><td><span>P是根节点</span></td><td><span>直接旋转P和X</span></td></tr><tr><td><span>Zig-zag</span></td><td><span>依次旋转P和X、G和X</span></td></tr><tr><td><span>Zig-zig</span></td><td><span>绕着节点X做一次单旋</span></td></tr></tbody></table></figure><p><span>重复进行上述操作，直到X成为新的根节点</span></p><blockquote><p><span>Zig-zag情况包含LR和RL，例如：</span></p><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415123955634.png" referrerpolicy="no-referrer" alt="image-20220415123955634"></p><p><span>Zig-zig情况包含LL和RR，例如：</span></p><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415124029704.png" referrerpolicy="no-referrer" alt="image-20220415124029704"></p></blockquote><blockquote><p><span>注意：以上所有旋转均遵循二叉搜索树性质</span></p></blockquote><h4 id='删除操作'><span>删除操作</span></h4><ol start='' ><li><p><span>对X节点进行一次查找操作</span></p><ul><li><span>查找后X就成为了根节点</span></li></ul></li><li><p><span>删除X节点</span></p><ul><li><span>删去X节点后剩下左子树T</span><sub><span>L</span></sub><span>和右子树T</span><sub><span>R</span></sub></li></ul></li><li><p><span>找到左子树T</span><sub><span>L</span></sub><span>的最大值节点，令该节点作为左子树的根</span></p></li><li><p><span>令T</span><sub><span>R</span></sub><span>称为修改后的左子树根节点的右孩子</span></p><ul><li><span>即成为左子树最大值的右孩子</span></li></ul></li></ol><h2 id='平摊分析amortized-analysis）'><span>平摊分析（Amortized Analysis）</span></h2><h3 id='什么是平摊分析'><span>什么是平摊分析</span></h3><ol start='' ><li><p><span>平摊分析是指在某种数据结构上完成一系列操作时，最坏情况下的平均时间</span></p></li><li><p><span>平摊分析与传统分析方法的主要差别为：</span></p><ul><li><span>平摊分析时间与传统分析方法的平均情况下时间不同，它是最坏情况下的平均时间</span></li><li><span>平摊分析不涉及概率分析，即它只分析总体</span></li><li><span>平摊分析中时间函数T(n)，其中n指的是操作的次数，而不是输入的规模。</span></li></ul></li><li><p><span>常见的有三种方法：聚集法、记账法、势能法。</span></p></li></ol><h3 id='聚合分析aggregate-analysis）'><span>聚合分析（Aggregate Analysis）</span></h3><h4 id='思想-1'><span>思想</span></h4><p><span>聚合分析是把n个不同或相同的操作合在一起加以分析计算得到总时间的方法</span></p><p><span>即 n 个操作序列在最坏情况下的总时间记为T(n)，其中n为操作数。</span></p><p><span>由此得到在最坏情况下每个操作的平均时间为T(n)/n。</span></p><h4 id='样例-1'><span>样例</span></h4><p><span>以push、pop和multipop操作为例</span></p><p><span>push操作所需时间为1，pop操作所需时间为1，multipop操作所需时间为min(sizeof(S),k)，其中S为栈中剩余元素，k为出栈次数</span></p><p><span>则由聚合分析的思想可得：由于pop操作和multipop操作均需由push次数决定，在最差情况下将进行n/2次push和n/2次multipop，则时间T=n，故每个操作的平摊时间为T(n)/n=O(1)</span></p><h3 id='会计分析accounting-analysis）'><span>会计分析（Accounting Analysis）</span></h3><h4 id='思想-2'><span>思想</span></h4><p><span>会计分析也称为记账分析，分析思想是先对每个不同的操作核定一个不同的费用（时间），然后计算n次操作总的费用。</span></p><p><span>由于所得费用是人为规定的，因此会出现得到松上界的情况。使得所得的操作费用可能与实际费用不符</span></p><p><span>对于松上界存在二种情况：</span></p><ol start='' ><li><span>超额收费：核定费用&gt;实际费用，此时差额存放在该对象的身上。</span></li><li><span>收费不足：核定费用&lt;实际费用，此时差额由该对象身上的存款支付</span></li></ol><p><span>费用的核定(平摊核定)是否正确需检查n次操作核定总费用是否大于n次操作实际总费用。因此，在记账方法中，某些操作的费用比它们实际代价或多或少，但所求得的平摊时间复杂度是相同的</span></p><h4 id='样例-2'><span>样例</span></h4><p><span>以push、pop和multipop操作为例</span></p><p><span>由于push操作决定了另外两种操作的操作次数，则可令push操作费用为+2，则pop和multipop操作的费用为0（该费用由push承担了），故平摊时间仍为O(1)</span></p><h3 id='势能分析potential-method）'><span>势能分析（Potential method）</span></h3><h4 id='思想-3'><span>思想</span></h4><p><span>势能分析通过定义一个势能函数，用于评价数据结构某个状态的势能，把每个操作的时间复杂度加上操作导致的势能变化作为摊还复杂度，如果经过了一系列操作以后，势能不减少，这一系列操作的时间复杂度之和不大于这一系列操作的摊还复杂度之和。</span></p><p><span>第i个操作的摊还代价C</span><sub><span>i</span></sub><sup><span>’</span></sup><span> = C</span><sub><span>i</span></sub><span>(第i个操作的实际代价) + 当前数据结构的总势能 - 进行第i个操作之前的数据结构的总势能，即</span></p><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415160001755.png" referrerpolicy="no-referrer" alt="image-20220415160001755"></p><p><span>则</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2002px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">总摊还代价（即摊还复杂度）= 所有操作的实际代价（实际时间复杂度）+ 进行所有操作后的数据结构总势能 - 原数据结构总势能</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 45px;"></div><div class="CodeMirror-gutters" style="display: none; height: 45px;"></div></div></div></pre><p><span>即</span></p><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415160030040.png" referrerpolicy="no-referrer" alt="image-20220415160030040"></p><p><span>如果势能函数满足</span><code>数据结构总势能 - 原数据结构总势能 &gt;= 0</code><span>，则总摊还代价是总实际代价的一个上界。</span></p><p><span>其中势能是由势能函数所求得的。而势能函数是由使用者根据实际情况所规定的。</span></p><p><span>总的来说，一个好的势能函数应该总是假设它的最小值在序列的开头</span></p><h4 id='样例-3'><span>样例</span></h4><p><span>略</span></p><h2 id='红黑树red-black-trees）'><span>红黑树（Red-Black Trees）</span></h2><h3 id='红黑树的性质'><span>红黑树的性质</span></h3><p><span>红黑树是一棵满足下列红黑属性的二叉搜索树</span></p><ol start='' ><li><span>每个节点要么是红的要么是黑的</span></li><li><span>根节点是黑的</span></li><li><span>每个叶节点（即空节点）是黑的</span></li><li><span>如果一个节点还是红的，那么他的孩子都是黑的</span></li><li><span>对于每个节点，从该节点到子代叶节点的所有的最短路径包含相同的黑节点数</span></li></ol><p><span>红黑树</span><strong><span>可以在O(log n)时间内做查找，插入和删除</span></strong></p><p><span>红黑树从根到叶子的最长路径不会超过最短路径的2倍</span></p><h3 id='黑高black-height）'><span>黑高（black-height）</span></h3><p><span>黑高是从x（不包含x）到任意子代叶节点的黑节点的数量，节点x的黑高记为 bh(x)。其中bh(Tree) = bh(root)</span></p><h3 id='调整规则'><span>调整规则</span></h3><h4 id='插入节点'><span>插入节点</span></h4><p><span>插入节点时将新插入的节点视为红色进行插入</span></p><figure><table><thead><tr><th><span>代码</span></th><th><span>情况</span></th><th><span>调整方法</span></th><th><span>口诀</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>新节点即根节点</span></td><td><span>将新节点变色为黑色</span></td><td><span>新根即黑</span></td></tr><tr><td><span>2</span></td><td><span>新节点的父节点是黑色</span></td><td><span>将插入的新节点设为红色即可</span></td><td><span>父黑调红</span></td></tr><tr><td><span>3</span></td><td><span>新节点的父节点和叔节点都是红色</span></td><td><span>将新节点的父节点和叔节点变为黑色，将新节点的祖父节点变为红色，之后从祖父节点开始依次检查上去，直到整棵树均满足红黑树规则</span></td><td><span>父叔均红爷变红</span></td></tr><tr><td><span>4</span></td><td><span>新节点的父节点是红色，叔节点是黑色或者没有叔节点，且祖父节点到新节点的关系为左右</span></td><td><span>以父节点为轴，做一次左旋，变为情况5，然后根据情况5进行处理即可</span></td><td><span>父红叔黑爷左右，父旋完后再处理</span></td></tr><tr><td><span>5</span></td><td><span>新节点的父节点是红色，叔节点是黑色或者没有叔节点，且祖父节点到新节点的关系为左左</span></td><td><span>以祖父节点为轴，进行一次右旋，使原先的父节点成为祖父节点，然后将原来的祖父节点变为红色，将原来的父节点变为黑色</span></td><td><span>父红叔黑爷左左，爷旋红，父变黑</span></td></tr><tr><td><span>6</span></td><td><span>右左，为情况4的镜像</span></td><td><span>略</span></td><td>&nbsp;</td></tr><tr><td><span>7</span></td><td><span>右右，为情况5的镜像</span></td><td><span>略</span></td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='删除节点未梳理完）'><span>删除节点（未梳理完）</span></h4><p><span>参考</span><a href='https://www.cnblogs.com/tongy0/p/5460623.html'><span>红黑树删除操作 - Jacc.Kim - 博客园 (cnblogs.com)</span></a></p><figure><table><thead><tr><th><span>代码</span></th><th><span>情况</span></th><th><span>调整方法</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>如果待删除节点有两个非空的孩子节点</span></td><td><span>用右子树中最小的节点替代待删除节点，并将该节点的颜色变成待删除节点的颜色，将原问题转化成其他情况的问题</span></td></tr><tr><td><span>2</span></td><td><span>如果待删除节点为红色且只有一个孩子或者没有孩子</span></td><td><span>直接删除待删除节点</span></td></tr><tr><td><span>3</span></td><td><span>如果待删除节点是黑色，唯一子节点一定是红色</span></td><td><span>将待删除节点删除，并将子节点颜色改变成黑色</span></td></tr><tr><td><span>4</span></td><td><span>如果待删除节点是黑色，没有孩子</span><sup><span>[1]</span></sup><span>，且待删除节点的兄弟节点为红色</span><sup><span>[2]</span></sup></td><td><span>将待删除节点的父亲节点左旋，使得兄弟节点处于原来父亲的位置，并将原来的父亲节点变为红色，原来的兄弟节点变为黑色，此时会发现待删除节点的现在兄弟节点的颜色为黑色</span><sup><span>[3]</span></sup><span>，即转化为情况5</span><sup><span>[4]</span></sup></td></tr><tr><td><span>5</span></td><td><span>如果待删除节点是黑色，没有孩子，且待删除节点的兄弟节点为黑色，父亲节点为红色</span></td><td><span>删除待删除节点，将其兄弟节点调整为红色，之后进行旋转操作，使原来的父节点作为原来的兄弟节点的孩子</span></td></tr><tr><td>&nbsp;</td><td><span>如果待删除节点是黑色，没有孩子，且待删除节点的兄弟节点为黑色，父亲节点为黑色</span></td><td><span>将待删除节点删去后，将其兄弟节点染为红色，然后递归检查其祖先节点的情况，如果有需要修正的则按照各个情况进行修正</span></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><blockquote><p><sup><span>[1]</span></sup><span> 因为待删除节点最多只有一个孩子，因此如果它自己为黑色，则黑高为1，此时如果具有有孩子，则只能为红色，如果为黑色则黑高不相等，不符合红黑树定义</span></p><p><sup><span>[2]</span></sup><span> 兄弟为红色意味着他们的父亲只能为黑色</span></p><p><sup><span>[3]</span></sup><span> 此时待删除节点的兄弟节点为其原兄弟节点的孩子</span></p><p><sup><span>[4]</span></sup><span> 操作的目的是将待删除节点的兄弟节点转变为黑色</span></p></blockquote><h3 id='红黑树与avl树的区别'><span>红黑树与AVL树的区别</span></h3><p><span>AVL树是严格平衡二叉树，要求每个节点的左右子树高度差不超过1，</span></p><p><span>红黑树条件更宽松一点，要求任何一条路径的长度不超过其他路径长度的两倍</span></p><p><span>AVL树的查找效率更高，平衡调整的成本更高</span></p><p><span>在频繁查找时应选用AVL树，在频繁插入删除时，应选用红黑树</span></p><p><span> </span></p><h2 id='b树'><span>B+树</span></h2><h3 id='b树的结构'><span>B+树的结构</span></h3><p><span>一棵M阶的B+树满足下列的结构属性：</span></p><ol start='' ><li><span>根节点要么是叶子，要么有2~M个孩子</span></li><li><span>所有的非叶节点(除了根节点)有M/2(向上取整)到M个孩子</span></li><li><span>所有的叶节点都是在相同深度的</span></li></ol><h3 id='b树的特点'><span>B+树的特点</span></h3><p><span>B+树主要被应用于数据库的索引结构，B+树</span><strong><span>只有叶节点存放数据</span></strong><span>，其余节点只存放索引</span></p><h3 id='b树的添加'><span>B+树的添加</span></h3><p><strong><span>遵循分裂策略</span></strong></p><p><span>最初当B+树是一棵空树时，根节点作为第一个叶子节点，在根节点中添加键值即可</span></p><p><span>当根节点中键值达到了M+1时将其等分(一般将较少的部分拆分到左边)，将右子树的最小值作为键值，按照按照此策略依次进行后续添加</span></p><h3 id='b树的删除'><span>B+树的删除</span></h3><p><strong><span>遵循合并原则</span></strong></p><p><span>当B+树删除叶子中的一个值时，如果该叶子中还有不少于2个值，则可无需进行任何操作</span></p><p><span>当删除后叶子只剩一个值，则将其合并至相邻叶子节点，然后按照添加规则进行修改，如果某一个节点只剩一个叶节点，则将该叶节点合并到相邻节点，并取消该节点的父亲</span></p><h3 id='2-3树易错点整理'><span>2-3树易错点整理</span></h3><ul><li><p><span>当只有root一个节点时，root没有孩子</span></p></li><li><p><span>B+树的深度和查找的时间复杂度</span></p><ul><li><span>Depth(M, N) = O( ⌈ log</span><sub><span>⌈M/2⌉</span></sub><sup><span>N</span></sup><span> ⌉ )</span></li></ul></li></ul><ul><li><span>T</span><sub><span>Find</span></sub><span> (M, N) = O( log</span><sup><span>N</span></sup><span> )</span></li></ul><h2 id='颠倒文件索引inverted-file-index'><span>颠倒文件索引(Inverted File Index)</span></h2><h4 id='术语文档关联矩阵term-document-incidence-matrix）'><span>术语文档关联矩阵（Term-Document Incidence Matrix）</span></h4><ul><li><span>实现方式</span></li></ul><p><span>将文档依次编号，然后检索每一个属于是否出现在文档中，如果出现，则该矩阵对应值为1，如果未出现，则为0。如下表所示</span></p><figure><table><thead><tr><th>&nbsp;</th><th><span>1</span></th><th><span>2</span></th><th><span>3</span></th><th><span>4</span></th></tr></thead><tbody><tr><td><span>a</span></td><td><span>0</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td></tr><tr><td><span>arrived</span></td><td><span>0</span></td><td><span>0</span></td><td><span>1</span></td><td><span>1</span></td></tr><tr><td><span>damaged</span></td><td><span>0</span></td><td><span>1</span></td><td><span>0</span></td><td><span>0</span></td></tr><tr><td><span>delivery</span></td><td><span>0</span></td><td><span>0</span></td><td><span>1</span></td><td><span>0</span></td></tr></tbody></table></figure><h4 id='颠倒文件索引'><span>颠倒文件索引</span></h4><p><span>颠倒文件索引是术语文档关联矩阵的紧凑版本</span></p><ul><li><span>索引(Index)</span></li></ul><p><span>索引是一种在文本中定位给定术语的机制（mechanism）</span></p><ul><li><span>倒排文件(Inverted file)</span></li></ul><p><span>倒排文件包含一个指向所有出现过对应术语的文本的指针列表</span></p><p><span>倒排文件也叫倒排索引，是一种利用属性值来确定记录位置的方式</span></p><ul><li><span>实现方式</span></li></ul><p><span>将术语编号，并将术语作为关键词，记录下出现过该术语的文档和术语在所有文档中出现的次数（一个文档最多记一次次数），如下表所示</span></p><figure><table><thead><tr><th><span>No.</span></th><th><span>Term</span></th><th><span>Times; Documents</span></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>a</span></td><td><span>&lt;3; 2,3,4&gt;</span></td></tr><tr><td><span>2</span></td><td><span>arrived</span></td><td><span>&lt;2; 3,4&gt;</span></td></tr><tr><td><span>3</span></td><td><span>damaged</span></td><td><span>&lt;1; 2&gt;</span></td></tr><tr><td><span>4</span></td><td><span>delivery</span></td><td><span>&lt;1; 3&gt;</span></td></tr><tr><td><span>5</span></td><td><span>fire</span></td><td><span>&lt;1; 2&gt;</span></td></tr></tbody></table></figure><p><span>在用户输入关键词后，取所有关键词的文档交集，返回的文档编号即符合要求的文档</span></p><ul><li><span>优化方式</span></li></ul><p><span>对于该方式，由于是取所有关键词的文档交集，可以采用优先检索出现频率少（即包含该关键词的文档数量少的关键词）的关键词的方法，可以有效增加检索速度</span></p><ul><li><span>索引生成算法</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">while ( read a document D ) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  while ( read a term T in D ) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( Find( Dictionary, T ) == false )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>Insert( Dictionary, T );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>Get T’s posting list;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>Insert a node to T’s posting list;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Write the inverted index to disk;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 202px;"></div><div class="CodeMirror-gutters" style="display: none; height: 202px;"></div></div></div></pre><blockquote><p><span>读取术语后需要进行的操作</span></p><ul><li><span>词干提取(word stemming)</span></li></ul><p><span>对一个单词进行处理，使其还原成词根的形式</span></p><p><span>具体操作</span></p><ol start='' ><li><span>将术语拆分成若干个单词</span></li><li><span>处理每个单词，使其只剩下词干或词根形式</span></li></ol><ul><li><span>寻找停止词（stop word）</span></li></ul><p><span>有些词非常常见，几乎每个文档都包含它们，例如“a”和“it”。为它们编制索引是无用的。它们被称为停止语。我们可以从原始文件中删除它们。</span></p></blockquote><ul><li><span>存储索引的方式</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">BlockCnt = 0; </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">while ( read a document D ) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>while ( read a term T in D ) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( out of memory ) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>Write BlockIndex[BlockCnt] to disk;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>BlockCnt ++;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>FreeMemory;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  if ( Find( Dictionary, T ) == false )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">    </span>Insert( Dictionary, T );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span>Get T’s posting list;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span>Insert a node to T’s posting list;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 314px;"></div><div class="CodeMirror-gutters" style="display: none; height: 314px;"></div></div></div></pre><h4 id='分布式索引'><span>分布式索引</span></h4><h5 id='术语分割索引term-partitioned-index）'><span>术语分割索引（Term-partitioned index）</span></h5><p><span>将所有的术语按照首字母存储在不同的服务器上，需要检索的时候则先检索每一台服务器上的单词，然后进行归并运算</span></p><h5 id='文档分割索引document-partitioned-index）'><span>文档分割索引（Document-partitioned index）</span></h5><p><span>将文档按照一定的数量分别存放在各个服务器上，然后检索的时候搜索对应的服务器即可。即将文件号为一个范围内的文件存在一个节点上</span></p><h4 id='动态索引'><span>动态索引</span></h4><h5 id='实现方式'><span>实现方式</span></h5><p><span>随着时间的推移，文档逐渐加入，之后对加入的文档进行如下操作</span></p><ol start='' ><li><span>对词典中已有的术语进行更新</span></li><li><span>加入原词典中未有的术语</span></li></ol><blockquote><p><span>如果文档被删除则将该文档做标记</span></p></blockquote><h5 id='优化方式'><span>优化方式</span></h5><ol start='' ><li><p><span>可以利用主索引和辅助索引（auxiliary index）配合检索，主索引负责存储原有的索引，数据较难更改，辅助索引负责查找新的文档</span></p></li><li><p><span>关键词压缩</span></p><ul><li><span>将所有关键词去除停止词后压缩成一串字符串进行查找</span></li></ul></li></ol><ol start='3' ><li><p><span>优化倒排列表（Posting List）</span></p><ul><li><span>即按照各个文档编号之间的关系存储文档编号，而非直接存储编号，这样避免了文档编号过大所带来的的空间开销</span></li></ul></li></ol><ol start='4' ><li><p><span>设置搜索引擎的搜索阈值（Thresholding）</span></p><ol start='' ><li><p><span>对文档设置阈值</span></p><ul><li><p><span>即仅仅检索并返回关联度最高的x篇文档</span></p></li><li><p><span>缺点</span></p><ul><li><span>由于截断，我们可能会错过一些相关文件</span></li><li><span>对于Boolean queries不可行</span></li></ul></li></ul></li><li><p><span>对查询设置阈值</span></p><ul><li><span>按频率升序对查询词进行排序或只根据原始查询词的某个百分比进行搜索</span></li></ul></li></ol></li></ol><h3 id='搜索引擎的核心要素'><span>搜索引擎的核心要素</span></h3><ol start='' ><li><p><span>索引速度</span></p><ul><li><span>即每小时能够检索的文档数</span></li></ul></li><li><p><span>搜索速度</span></p><ul><li><span>延迟是索引大小的函数</span></li></ul></li><li><p><span>查询语言的表达能力</span></p><ul><li><span>即能够表达复杂的信息需求或加快复杂查询的速度</span></li></ul></li><li><p><span>用户幸福感</span></p><ol start='' ><li><p><span>数据检索(data retrieval)性能评估依据</span></p><ol start='' ><li><span>响应时间</span></li><li><span>索引空间</span></li><li><span>注意：数据检索性能评估要在确定性能之后才能进行</span></li></ol></li><li><p><span>信息检索(information retrieval)绩效评估依据</span></p><ol start='' ><li><span>答案集的相关性</span></li></ol></li></ol></li></ol><blockquote><p><span>注意data retrieval和information retrieval的区别，会考</span></p></blockquote><h3 id='衡量关联性relevance）的要素'><span>衡量关联性（relevance）的要素</span></h3><ol start='' ><li><span>基准文档集</span></li><li><span>一组基准查询</span></li><li><span>对每个查询文档对进行相关或不相关的二元评估</span></li></ol><figure><table><thead><tr><th>&nbsp;</th><th><span>Relevant</span></th><th><span>Irrelevant</span></th></tr></thead><tbody><tr><td><span>Retrieved</span></td><td><span>R</span><sub><span>R</span></sub></td><td><span>I</span><sub><span>R</span></sub></td></tr><tr><td><span>Not Retrieved</span></td><td><span>R</span><sub><span>N</span></sub></td><td><span>I</span><sub><span>N</span></sub></td></tr></tbody></table></figure><p><span>Precision(查准率) P = R</span><sub><span>R</span></sub><span> / (R</span><sub><span>R</span></sub><span> + I</span><sub><span>R</span></sub><span>)</span></p><p><span>Recall(查全率)    R = R</span><sub><span>R</span></sub><span> / (R</span><sub><span>R</span></sub><span> + R</span><sub><span>N</span></sub><span>)</span></p><blockquote><p><span>precision和recall一般成负相关</span></p></blockquote><h2 id='最左堆leftist-heaps）'><span>最左堆（leftist heaps）</span></h2><h3 id='基本概念'><span>基本概念</span></h3><ul><li><p><span>目标</span></p><ul><li><span>在O(N)的时间复杂度内加速归并</span></li></ul></li><li><p><span>NPL(null path length)</span></p><ul><li><span>Npl(X)指节点X到任意叶节点的最短路径</span></li><li><span>注意：Npl(NULL)=-1</span></li><li><span>Npl(X) = min { Npl(C) + 1 for all C as children of X }</span></li></ul></li><li><p><span>最左堆定义</span></p><ul><li><span>最左堆定义为在堆中的每个节点X的左子树的Npl不小于右子树的Npl</span></li></ul></li></ul><h3 id='最左堆相关定理'><span>最左堆相关定理</span></h3><ul><li><p><span>定理</span></p><ul><li><span>右路径上具有r个节点的最左树至少有2</span><sup><span>r</span></sup><span>-1个节点（可用归纳法证明）</span></li></ul></li><li><p><span>最左堆的好处</span></p><ul><li><span>我们能在右路径上进行所有的工作，从而使其时间复杂度降低</span></li></ul></li></ul><h3 id='最左堆实现步骤'><span>最左堆实现步骤</span></h3><h5 id='归并操作递归版本'><span>归并操作递归版本</span></h5><ol start='' ><li><p><span>基本操作</span></p><ol start='' ><li><p><span>Merge( H1-&gt;Right, H2 )</span></p><ul><li><span>此处以H1&gt;H2为例</span></li><li><span>注意，此处归并并非只做一次，而是递归归并</span></li></ul></li><li><p><span>Attach( H2, H1-&gt;Right )</span></p></li><li><p><span>Swap(H1-&gt;Right, H1-&gt;Left ) if necessary</span></p></li></ol></li></ol><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220417222232828.png" referrerpolicy="no-referrer" alt="image-20220417222232828"></p><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220417222243767.png" referrerpolicy="no-referrer" alt="image-20220417222243767"></p><ol start='2' ><li><span>伪代码：</span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">PriorityQueue  Merge ( PriorityQueue H1, PriorityQueue H2 )</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{ </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( H1 == NULL ) &nbsp; return H2;<span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( H2 == NULL ) &nbsp; return H1;<span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( H1-&gt;Element &lt; H2-&gt;Element )  return Merge1( H1, H2 );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>else return Merge1( H2, H1 );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">static PriorityQueue</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Merge1( PriorityQueue H1, PriorityQueue H2 )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{ </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( H1-&gt;Left == NULL ) <span class="cm-tab" role="presentation" cm-text="	">    </span>/* single node */</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>H1-&gt;Left = H2;<span class="cm-tab" role="presentation" cm-text="	">  </span>/* H1-&gt;Right is already NULL </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp;  and H1-&gt;Npl is already 0 */</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>else {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>H1-&gt;Right = Merge( H1-&gt;Right, H2 ); &nbsp; &nbsp; /* Step 1 &amp; 2 */</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>if ( H1-&gt;Left-&gt;Npl &lt; H1-&gt;Right-&gt;Npl )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>SwapChildren( H1 );<span class="cm-tab" role="presentation" cm-text="	"> </span>/* Step 3 */</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>H1-&gt;Npl = H1-&gt;Right-&gt;Npl + 1;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>} /* end else */</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>return H1;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 470px;"></div><div class="CodeMirror-gutters" style="display: none; height: 470px;"></div></div></div></pre><h5 id='归并操作迭代版本'><span>归并操作迭代版本</span></h5><ul><li><p><span>基本操作</span></p><ol start='' ><li><span>Sort the right paths without changing their left children</span></li><li><span>Swap children if necessary</span></li></ol></li></ul><h5 id='删除根节点操作'><span>删除根节点操作</span></h5><ol start='' ><li><span>Delete the root</span></li><li><span>Merge the two subtrees</span></li></ol><h3 id='时间复杂度-1'><span>时间复杂度</span></h3><p><span>合并两个左堆的时间复杂度为O(log</span><sup><span>N</span></sup><span>)，相当于把右路径的长度相加</span></p><p><span>删除根节点的时间复杂度为O(log</span><sup><span>N</span></sup><span>)</span></p><blockquote><p><span>注意：迭代版本和递归版本的归并操作时间复杂度均相同，迭代版本效率高一点</span></p></blockquote><h2 id='斜堆skew-heaps）'><span>斜堆（skew heaps）</span></h2><h3 id='skew-heaps特点'><span>skew heaps特点</span></h3><p><span>斜堆是最左堆的一个简化版本，斜堆不需要存储Npl信息</span></p><p><span>斜堆在合并的时候</span><strong><span>始终交换</span></strong><span>左右子节点，</span><strong><span>除非右路径上最大的节点没有交换其子节点</span></strong></p><h3 id='skew-heaps定义'><span>skew heaps定义</span></h3><ol start='' ><li><span>只有一个元素的堆是斜堆</span></li><li><span>两个斜堆通过斜堆的合并操作，得到的结果仍是斜堆</span></li></ol><h3 id='合并斜堆'><span>合并斜堆</span></h3><blockquote><p><span>注意：插入斜堆是合并斜堆的一个特例，因此不独立进行分析</span></p></blockquote><h4 id='递归实现'><span>递归实现</span></h4><ol start='' ><li><span>如果一个空左倾堆和一个非空左倾堆合并，返回非空左倾堆</span></li><li><span>如果两个左倾堆都非空，那么比较两个根节点，取较小的节点为新的根节点，将较大堆的根节点作为其右孩子</span></li><li><span>交换根节点的右子堆和左子堆</span></li><li><span>之后递归比较原较小根节点堆的右子堆和原较大根节点堆，重复上方步骤递归合并</span></li></ol><p><span>以下为合并H1和H2的结果图</span></p><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415185141471.png" referrerpolicy="no-referrer" alt="image-20220415185141471"></p><h4 id='迭代实现'><span>迭代实现</span></h4><ol start='' ><li><span>分别把两个堆的右路径上所有节点的右子树分离出来。</span></li><li><span>把分离出来的子树按根节点元素升序（广义上的升序）排列。</span></li><li><span>把倒数第二个树左右子树交换，把最后一个树作为倒数第二个树的左子树，之后重复此操作依次向前直到最小根元素为止</span></li></ol><h3 id='时间复杂度-2'><span>时间复杂度</span></h3><p><span>merge操作的时间复杂度：摊还时间为O(logN)，最坏情况为O(N)</span></p><h3 id='skew-heaps注意点'><span>skew heaps注意点</span></h3><ol start='' ><li><span>倾斜堆的优点是无需额外的空间来保持路径长度，也无需测试来确定何时交换子级</span></li><li><span>精确确定左堆和斜堆的预期右路径长度是一个开放的问题。</span></li><li><span>如果将节点1到2</span><sup><span>k</span></sup><span>-1插入一个空的最小歪堆，则所得到的树始终是一个满二叉树</span></li></ol><h2 id='二项队列'><span>二项队列</span></h2><h3 id='二项队列介绍'><span>二项队列介绍</span></h3><p><span>二项队列不是一棵树，它是一个森林，由一组堆树按照一定顺序组成的森林</span></p><h3 id='二项队列的性质'><span>二项队列的性质</span></h3><ol start='' ><li><span>每一颗树都是一个有约束的堆序树，叫做二项树</span></li><li><span>高度为k的第k个二项树Bk由一个根节点和B</span><sub><span>0</span></sub><span>, B</span><sub><span>1</span></sub><span>, .......B</span><sub><span>k-1</span></sub><span>构成</span></li><li><span>高度为k的二项树的结点个数为2</span><sup><span>k</span></sup></li></ol><p><span>我们可以用二项树的结合表示任意大小的优先队列。例如，大小为13的优先队列就可以用B</span><sub><span>3</span></sub><span>，B</span><sub><span>2</span></sub><span>，B</span><sub><span>0</span></sub><span>来表示，二进制的表示为1101</span></p><ul><li><span>二项队列实例</span></li></ul><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220417225239463.png" referrerpolicy="no-referrer" alt="image-20220417225239463"></p><h3 id='二项队列定理'><span>二项队列定理</span></h3><p><span>一个有着N个元素的二项队列可以通过N次成功的插入操作从而在O(N)的时间内生成</span></p><h3 id='二项队列的操作'><span>二项队列的操作</span></h3><h4 id='查找最小值'><span>查找最小值</span></h4><p><span>二项队列的最小值为某一个二项树的根</span></p><p><span>在这里最多有</span><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415185954535.png" alt="image-20220415185954535" style="zoom:50%;" /><span>个根</span></p><p><span>因此查找的时间复杂度为 O(log</span><sup><span>N</span></sup><span>)</span></p><h4 id='归并操作'><span>归并操作</span></h4><p><span>从B</span><sub><span>0</span></sub><span>开始进行归并，较简单，此处不介绍</span></p><p><span>时间复杂度为 O(log</span><sup><span>N</span></sup><span>)</span></p><h4 id='插入操作-2'><span>插入操作</span></h4><p><span>插入操作是归并操作的特殊情况，略</span></p><p><span>因为插入N个值的最差情况时O(N)，因此插入操作的均摊时间复杂度为O(1)</span></p><h4 id='删除最小值操作'><span>删除最小值操作</span></h4><ol start='' ><li><p><span>进行一次查找最小值操作，令最小值在B</span><sub><span>k</span></sub><span>上</span></p><ul><li><span>需要O(log N)时间</span></li></ul></li><li><p><span>将B</span><sub><span>k</span></sub><span>暂时从二项森林 H 中去除，令剩余的二项树的森林为 H’</span></p><ul><li><span>需要O(1)时间</span></li></ul></li><li><p><span>从B</span><sub><span>k</span></sub><span>中将根去除，令得到的二项树的森林为H’‘</span></p><ul><li><span>需要O(log N)时间</span></li></ul></li><li><p><span>归并H‘和H’‘</span></p><ul><li><span>需要O(log N)时间</span></li></ul></li></ol><h3 id='二项队列代码结构'><span>二项队列代码结构</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-keyword">struct</span> <span class="cm-def">BinNode</span> <span class="cm-operator">*</span><span class="cm-variable">Position</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-keyword">struct</span> <span class="cm-def">Collection</span> <span class="cm-operator">*</span><span class="cm-variable">BinQueue</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-keyword">struct</span> <span class="cm-def">BinNode</span> <span class="cm-operator">*</span><span class="cm-variable">BinTree</span>; &nbsp;<span class="cm-comment">/* missing from p.176 */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">struct</span> <span class="cm-def">BinNode</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{ </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">ElementType</span><span class="cm-tab" role="presentation" cm-text="	"> </span> &nbsp; &nbsp;<span class="cm-variable">Element</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Position</span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-variable">LeftChild</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Position</span> <span class="cm-tab" role="presentation" cm-text="	">   </span> &nbsp; &nbsp;<span class="cm-variable">NextSibling</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">} ;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">struct</span> <span class="cm-def">Collection</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{ </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable-3">int</span><span class="cm-tab" role="presentation" cm-text="	"> </span> &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">CurrentSize</span>; &nbsp;<span class="cm-comment">/* total number of nodes */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">BinTree</span><span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-variable">TheTrees</span>[ <span class="cm-variable">MaxTrees</span> ];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">} ;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">BinTree</span> <span class="cm-def">CombineTrees</span>( <span class="cm-variable">BinTree</span> <span class="cm-variable">T1</span>, <span class="cm-variable">BinTree</span> <span class="cm-variable">T2</span> )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{ &nbsp;<span class="cm-comment">/* merge equal-sized T1 and T2 */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">if</span> ( <span class="cm-variable">T1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">Element</span> <span class="cm-operator">&gt;</span> <span class="cm-variable">T2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">Element</span> )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">/* attach the larger one to the smaller one */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">return</span> <span class="cm-variable">CombineTrees</span>( <span class="cm-variable">T2</span>, <span class="cm-variable">T1</span> );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment">/* insert T2 to the front of the children list of T1 */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">T2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">NextSibling</span> <span class="cm-operator">=</span> <span class="cm-variable">T1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">LeftChild</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">T1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">LeftChild</span> <span class="cm-operator">=</span> <span class="cm-variable">T2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">return</span> <span class="cm-variable">T1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">BinQueue</span> &nbsp;<span class="cm-def">Merge</span>( <span class="cm-variable">BinQueue</span> <span class="cm-variable">H1</span>, <span class="cm-variable">BinQueue</span> <span class="cm-variable">H2</span> )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;">{<span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-variable">BinTree</span> <span class="cm-variable">T1</span>, <span class="cm-variable">T2</span>, <span class="cm-variable">Carry</span> <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable-3">int</span> <span class="cm-variable">i</span>, <span class="cm-variable">j</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">if</span> ( <span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">CurrentSize</span> <span class="cm-operator">+</span> <span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span> <span class="cm-variable">CurrentSize</span> <span class="cm-operator">&gt;</span> <span class="cm-variable">Capacity</span> ) &nbsp;<span class="cm-variable">ErrorMessage</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">CurrentSize</span> <span class="cm-operator">+=</span> <span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span> <span class="cm-variable">CurrentSize</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">for</span> ( <span class="cm-variable">i</span><span class="cm-operator">=</span><span class="cm-number">0</span>, <span class="cm-variable">j</span><span class="cm-operator">=</span><span class="cm-number">1</span>; <span class="cm-variable">j</span><span class="cm-operator">&lt;=</span> <span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">CurrentSize</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>, <span class="cm-variable">j</span><span class="cm-operator">*=</span><span class="cm-number">2</span> ) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-variable">T1</span> <span class="cm-operator">=</span> <span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>]; <span class="cm-variable">T2</span> <span class="cm-operator">=</span> <span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>]; <span class="cm-comment">/*current trees */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-keyword">switch</span>( <span class="cm-number">4</span><span class="cm-operator">*!!</span><span class="cm-variable">Carry</span> <span class="cm-operator">+</span> <span class="cm-number">2</span><span class="cm-operator">*!!</span><span class="cm-variable">T2</span> <span class="cm-operator">+</span> <span class="cm-operator">!!</span><span class="cm-variable">T1</span> ) { </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">0</span>: <span class="cm-comment">/* 000 */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-keyword">case</span> <span class="cm-number">1</span>: <span class="cm-comment">/* 001 */</span> &nbsp;<span class="cm-keyword">break</span>;<span class="cm-tab" role="presentation" cm-text="	">   </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">2</span>: <span class="cm-comment">/* 010 */</span> &nbsp;<span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">T2</span>; <span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-keyword">break</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">4</span>: <span class="cm-comment">/* 100 */</span> &nbsp;<span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">Carry</span>; <span class="cm-variable">Carry</span> <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-keyword">break</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">3</span>: <span class="cm-comment">/* 011 */</span> &nbsp;<span class="cm-variable">Carry</span> <span class="cm-operator">=</span> <span class="cm-variable">CombineTrees</span>( <span class="cm-variable">T1</span>, <span class="cm-variable">T2</span> );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-keyword">break</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">5</span>: <span class="cm-comment">/* 101 */</span> &nbsp;<span class="cm-variable">Carry</span> <span class="cm-operator">=</span> <span class="cm-variable">CombineTrees</span>( <span class="cm-variable">T1</span>, <span class="cm-variable">Carry</span> );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-keyword">break</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">6</span>: <span class="cm-comment">/* 110 */</span> &nbsp;<span class="cm-variable">Carry</span> <span class="cm-operator">=</span> <span class="cm-variable">CombineTrees</span>( <span class="cm-variable">T2</span>, <span class="cm-variable">Carry</span> );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-keyword">break</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">case</span> <span class="cm-number">7</span>: <span class="cm-comment">/* 111 */</span> &nbsp;<span class="cm-variable">H1</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">Carry</span>; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">Carry</span> <span class="cm-operator">=</span> <span class="cm-variable">CombineTrees</span>( <span class="cm-variable">T1</span>, <span class="cm-variable">T2</span> ); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">H2</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; <span class="cm-keyword">break</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp;  } <span class="cm-comment">/* end switch */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>} <span class="cm-comment">/* end for-loop */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">return</span> <span class="cm-variable">H1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ElementType</span> &nbsp;<span class="cm-def">DeleteMin</span>( <span class="cm-variable">BinQueue</span> <span class="cm-variable">H</span> )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-variable">BinQueue</span> <span class="cm-variable">DeletedQueue</span>; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Position</span> <span class="cm-variable">DeletedTree</span>, <span class="cm-variable">OldRoot</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">ElementType</span> <span class="cm-variable">MinItem</span> <span class="cm-operator">=</span> <span class="cm-variable">Infinity</span>; &nbsp;<span class="cm-comment">/* the minimum item to be returned */</span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable-3">int</span> <span class="cm-variable">i</span>, <span class="cm-variable">j</span>, <span class="cm-variable">MinTree</span>; <span class="cm-comment">/* MinTree is the index of the tree with the minimum item */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">if</span> ( <span class="cm-variable">IsEmpty</span>( <span class="cm-variable">H</span> ) )  { &nbsp;<span class="cm-variable">PrintErrorMessage</span>(); &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">–Infinity</span>; }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">for</span> ( <span class="cm-variable">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">MaxTrees</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>) { &nbsp;<span class="cm-comment">/* Step 1: find the minimum item */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-keyword">if</span>( <span class="cm-variable">H</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>] <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">H</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>]<span class="cm-operator">-&gt;</span><span class="cm-variable">Element</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">MinItem</span> ) { </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">MinItem</span> <span class="cm-operator">=</span> <span class="cm-variable">H</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">i</span>]<span class="cm-operator">-&gt;</span><span class="cm-variable">Element</span>; &nbsp;<span class="cm-variable">MinTree</span> <span class="cm-operator">=</span> <span class="cm-variable">i</span>; &nbsp;  } <span class="cm-comment">/* end if */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>} <span class="cm-comment">/* end for-i-loop */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">DeletedTree</span> <span class="cm-operator">=</span> <span class="cm-variable">H</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[ <span class="cm-variable">MinTree</span> ]; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">H</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[ <span class="cm-variable">MinTree</span> ] <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>; &nbsp; <span class="cm-comment">/* Step 2: remove the MinTree from H =&gt; H’ */</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">OldRoot</span> <span class="cm-operator">=</span> <span class="cm-variable">DeletedTree</span>; &nbsp; <span class="cm-comment">/* Step 3.1: remove the root */</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">DeletedTree</span> <span class="cm-operator">=</span> <span class="cm-variable">DeletedTree</span><span class="cm-operator">-&gt;</span><span class="cm-variable">LeftChild</span>; &nbsp; <span class="cm-variable">free</span>(<span class="cm-variable">OldRoot</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">DeletedQueue</span> <span class="cm-operator">=</span> <span class="cm-variable">Initialize</span>(); &nbsp; <span class="cm-comment">/* Step 3.2: create H” */</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">DeletedQueue</span><span class="cm-operator">-&gt;</span><span class="cm-variable">CurrentSize</span> <span class="cm-operator">=</span> ( <span class="cm-number">1</span><span class="cm-operator">&lt;&lt;</span><span class="cm-variable">MinTree</span> ) <span class="cm-variable">–</span> <span class="cm-number">1</span>; &nbsp;<span class="cm-comment">/* 2MinTree – 1 */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">for</span> ( <span class="cm-variable">j</span> <span class="cm-operator">=</span> <span class="cm-variable">MinTree</span> <span class="cm-variable">–</span> <span class="cm-number">1</span>; <span class="cm-variable">j</span> <span class="cm-operator">&gt;=</span> <span class="cm-number">0</span>; <span class="cm-variable">j</span> <span class="cm-variable">–</span> <span class="cm-variable">–</span> ) { &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-variable">DeletedQueue</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">j</span>] <span class="cm-operator">=</span> <span class="cm-variable">DeletedTree</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-variable">DeletedTree</span> <span class="cm-operator">=</span> <span class="cm-variable">DeletedTree</span><span class="cm-operator">-&gt;</span><span class="cm-variable">NextSibling</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;<span class="cm-variable">DeletedQueue</span><span class="cm-operator">-&gt;</span><span class="cm-variable">TheTrees</span>[<span class="cm-variable">j</span>]<span class="cm-operator">-&gt;</span><span class="cm-variable">NextSibling</span> <span class="cm-operator">=</span> <span class="cm-variable">NULL</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>} <span class="cm-comment">/* end for-j-loop */</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">H</span><span class="cm-operator">-&gt;</span><span class="cm-variable">CurrentSize</span> &nbsp;<span class="cm-variable">–</span> <span class="cm-operator">=</span> <span class="cm-variable">DeletedQueue</span><span class="cm-operator">-&gt;</span><span class="cm-variable">CurrentSize</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">H</span> <span class="cm-operator">=</span> <span class="cm-variable">Merge</span>( <span class="cm-variable">H</span>, <span class="cm-variable">DeletedQueue</span> ); <span class="cm-comment">/* Step 4: merge H’ and H” */</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">return</span> <span class="cm-variable">MinItem</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1814px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1814px;"></div></div></div></pre><h2 id='回溯算法backtracking'><span>回溯算法(Backtracking)</span></h2><p><span>回溯算法本质上就是dfs+剪枝(pruning)</span></p><p><span>主要难点在于剪枝，具体说明略</span></p><h4 id='α-pruning'><span>α pruning</span></h4><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220417231526206.png" referrerpolicy="no-referrer" alt="image-20220417231526206"></p><blockquote><p><span>即爷节点求最大值，子节点求最小值时，如果右孩子的任意孩子中已经有节点小于左孩子的最小值，则直接进行剪枝</span></p></blockquote><h4 id='β-pruning'><span>β pruning</span></h4><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220417231710434.png" referrerpolicy="no-referrer" alt="image-20220417231710434"></p><h4 id='α-β-pruning'><span>α-β pruning</span></h4><p><span>即两种剪枝的结合</span></p><h2 id='分治算法divide-and-conquer'><span>分治算法(Divide and Conquer)</span></h2><p><span>分支算法就是将一个问题递归调地分解成若干个子问题，然后对于子问题进行求解，最后依次合并求解的结果得到最优解</span></p><p><span>朴素的递归式：T(N) = aT(N/b) + f(N)</span></p><h1 id='递归时间复杂度分析'><span>递归时间复杂度分析</span></h1><h2 id='递归树法'><span>递归树法</span></h2><p><span>递归树法主要用于求解递归的时间复杂度问题</span></p><p><span>递归树本质就是将所有的递归情况转化成一棵树，针对该树的每一层计算所需的时间复杂度，最后将所有层的时间复杂度相加即可</span></p><blockquote><p><span>注意：递归树所求的时间复杂度可以是一个范围，但是数量级要相同</span></p></blockquote><h2 id='主定理master-theorem'><span>主定理(Master Theorem)</span></h2><p><span>主定理适用于求解如下递归式算法的时间复杂度：</span></p><p><span>其中：</span></p><ul><li><span>n 是问题规模大小；</span></li><li><span>a 是原问题的子问题个数；</span></li><li><span>n/b 是每个子问题的大小，这里假设每个子问题有相同的规模大小；</span></li><li><span>f(n) 是将原问题分解成子问题和将子问题的解合并成原问题的解的时间。</span></li><li><span>对上面的式子进行分析，得到三种情况：</span></li></ul><p><img src="https://img-blog.csdnimg.cn/c16a676ee61546e6a032acee7a5658f4.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzU2MDkxMw==,size_16,color_FFFFFF,t_70#pic_center" referrerpolicy="no-referrer" alt="在这里插入图片描述"></p><ul><li><span>其他形式的主定理</span></li></ul><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20220415220848287.png" referrerpolicy="no-referrer" alt="image-20220415220848287"></p></div></div>
+</body>
+</html>
